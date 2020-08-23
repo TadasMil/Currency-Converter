@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Currency.module.scss'
 
-export const Currency = () => {
+export const Currency = (props) => {
     return (
         <div className={classes.Currency}>
             <select name="cars" id="cars">
