@@ -7,6 +7,12 @@ import axios from 'axios'
 class App extends Component {
   componentDidMount(){
     axios.get('http://localhost:5000/')
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
   render(){
     return (

@@ -7,4 +7,6 @@ router.get('/', currencyController.LoadCurrencies);
 
 router.get('/currency', currencyController.GetAllCurrencies);
 
+//router.get('/currency/names', currencyController.GetCurrencyNames);
+
 module.exports = router;

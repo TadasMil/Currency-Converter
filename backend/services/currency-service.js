@@ -14,7 +14,7 @@ const GetAllCurrencies = () => {
                                 }
                                 const parsedData = JSON.stringify(result, null, 4);
                                 currencyRates = JSON.parse(parsedData);
-       
+    
                         })
                 resolve({currency: currencyRates}, InsertCurrencies(currencyRates))
             })
@@ -23,7 +23,7 @@ const GetAllCurrencies = () => {
 
 const InsertCurrencies = async (currencyRates) => {
     await Currency.deleteMany();
-    for (var key in currencyRates) {  
+    for (var key in currencyRates) {   
         for(var number in currencyRates[key].FxRate){
             var currencyValue = currencyRates[key].FxRate[number];
             const currency = new Currency({
@@ -49,7 +49,32 @@ const GetCurrencies = () => {
     })
 }
 
+// const GetCurrenciesFullNames = () => {
+//     var currencyFullNames = {}
+//     return new Promise((resolve) => {
+//         axios.get('https://www.lb.lt/webservices/FxRates/FxRates.asmx/getCurrencyList?wsdl')
+//             .then((response) => {
+//                 parser.parseString(response.data, (error, result) => {
+//                     if(error){
+//                         throw error;
+//                     }
+//                     const parsedData = JSON.stringify(result, null, 4);
+//                     currencyFullNames = JSON.parse(parsedData);
+//                     var data = {}
+
+//                     for(var key in currencyRates){
+//                         for(var number in currencyRates[key]){
+//                             console.log(currencyRates[key]..)
+//                         }
+//                     }
+//                 })
+//                 resolve(currencyFullNames)
+//         })
+//     })
+// }
+
 
 exports.GetAllCurrencies = GetAllCurrencies;
 exports.InsertCurrencies = InsertCurrencies;
 exports.GetCurrencies = GetCurrencies;
+//exports.GetCurrenciesFullNames = GetCurrenciesFullNames;

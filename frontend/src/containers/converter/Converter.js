@@ -6,14 +6,30 @@ export default class Converter extends Component {
     state = {
         amount: '',
         result: '',
-        currencyData: []
-
+        currencyData: [],
+        boxSelected: 0,
+        selectedCurrency: [],
+        selectBoxUsed: 0
     }
+
     handleAmountChange = (e) => {
       this.setState({
           amount: e.target.value
       })
     }
+
+    handleSelectChange = (selectedBox, e) => {
+        var selection = e.target.value;
+        
+        const newSelected = [...this.state.selectedCurrency]
+        
+        newSelected[selectedBox] = selection;
+
+        this.setState({
+            selectedCurrency: newSelected
+        })
+    }
+
     componentDidMount(){
         axios.get('http://localhost:5000/currency')
             .then(response => {
@@ -21,13 +37,20 @@ export default class Converter extends Component {
              this.setState({
                  currencyData: currency
              })
+            }).catch(error => {
+                console.log(error)
             })
     }
     render() {
         return (
             <>
-               <ConverterModule handleAmountChange={this.handleAmountChange} currencyRates={this.state.currencyData}></ConverterModule>
-               {console.log(this.state.currencyData)}
+                <ConverterModule
+                    amount={this.state.amount}
+                    handleAmountChange={this.handleAmountChange}
+                    currencyRates={this.state.currencyData}
+                    handleSelectChange={this.handleSelectChange}
+                    selectBoxUsed={this.state.selectBoxUsed}>
+                </ConverterModule>
             </>
         )
     }
