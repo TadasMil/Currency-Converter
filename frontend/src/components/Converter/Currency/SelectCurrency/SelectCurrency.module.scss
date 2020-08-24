@@ -1,6 +1,13 @@
 .SelectCurrency{
-    margin: 1rem auto;
+    margin: 1rem 2rem;
     width: 80%;
-    box-shadow: 1px;
     outline: none;
+    padding: 1rem 2rem 1rem 1rem;
+    border: 1px solid blue;
+    text-transform: uppercase;
+}
+
+.Option{
+    padding: 5px;
+    font-size: 0.9rem;
 }

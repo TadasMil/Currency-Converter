@@ -1,8 +1,22 @@
 .Result{
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        text-align: center;
-        margin: 0 2rem;
+       color: #ffffff;
+       p{
+        font-size: 20px;
+       }
+}
+
+.ResultData{
+       display: flex;
+       justify-content: center;
+
+       h3{
+              font-size: 72px;
+       }
+
+       p{
+              margin-top: auto;
+              margin-bottom: 15px;
+              margin-left: 10px;
+       }
+
 }

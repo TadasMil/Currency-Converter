@@ -1,8 +1,22 @@
 .Amount{
+    padding: 0 50px 50px 50px;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+
+    
+    p{
+        margin: 0 auto 1rem auto;
+    }
+}
+.AmountInput{
     outline: none;
     border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    padding: 1rem 2rem 1rem 1rem;
     text-align: center;
     margin: 0 2rem;
+    font-size: 1rem;
 }

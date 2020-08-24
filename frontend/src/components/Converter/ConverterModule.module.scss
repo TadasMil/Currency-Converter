@@ -1,14 +1,26 @@
 .Converter{
     height: 100%;
     text-align:center;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.ConverterImage{
+    background: url('https://img.freepik.com/free-vector/abstract-design-blue-background_23-2148497489.jpg?size=626&ext=jpg&ga=GA1.2.151773081.1593820800');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    margin: auto;
+}
+
 .ConverterModule{
+    padding: 2rem 0;
+}
+
+.ConverterSelectDiv{
     display: flex;
-    flex-direction: row;
-    padding: 100px 50px;
-    background-color: #EDC2D8FF;
+    padding: 50px 50px;
+    margin: auto;
+    justify-content: center;
 }

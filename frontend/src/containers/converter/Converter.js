@@ -5,53 +5,11 @@ import axios from 'axios'
 export default class Converter extends Component {
     state = {
         amount: '',
-        resultInput: '',
+        displayResult: "",
         result: '',
         currencyData: [],
         selectedCurrency: [],
         selectBoxUsed: 0
-    }
-
-    handleAmountChange = (e) => {
-      this.setState({
-          amount: e.target.value
-      })
-    }
-
-    GetTheSelectedAmount = () => {
-        if(this.state.selectedCurrency.length === 2) {
-            let [num1, num2] = this.state.selectedCurrency;
-            this.CalculateTheSum(num1, num2);
-        }
-    }
-
-    handleShowResult = () => {
-        this.setState({
-            resultInput: this.state.result
-        })
-    }
-
-    CalculateTheSum = (amt1, amt2) => {
-        const result = ((this.state.amount / amt1) * amt2).toFixed(2);
-        this.setState({
-            result: result
-        }, () => {
-            this.handleShowResult();
-        })
-    }
-
-    handleSelectChange = (selectedBox, e) => {
-        var selection = e.target.value;
-
-        const newSelected = [...this.state.selectedCurrency]
-        
-        newSelected[selectedBox] = selection;
-
-        this.setState({
-            selectedCurrency: newSelected
-        }, () => {
-            this.GetTheSelectedAmount();
-          })
     }
 
     componentDidMount(){
@@ -65,6 +23,65 @@ export default class Converter extends Component {
                 console.log(error)
             })
     }
+
+    handleAmountChange = (e) => {
+      this.setState({
+          amount: e.target.value
+      }, () => {
+        this.GetTheSelectedAmount();
+      })
+    }
+
+    handleSelectChange = (selectedBox, e) => {
+        var selection = e.target.value;
+
+        const newSelected = [...this.state.selectedCurrency]
+        
+        newSelected[selectedBox] = selection;
+
+        this.setState({
+            selectedCurrency: newSelected
+        }, () => {
+            this.GetTheSelectedAmount();
+        })
+    }
+
+    GetTheSelectedAmount = () => {
+        const maxCurrencies = 2;
+        if(this.state.selectedCurrency.length === maxCurrencies) {
+            const num1 = this.state.selectedCurrency[0].slice(4);
+            const num2 = this.state.selectedCurrency[1].slice(4);
+
+            this.CalculateTheSum(num1, num2);
+        }
+    }
+
+    CalculateTheSum = (amt1, amt2) => {
+        const result = ((this.state.amount / amt1) * amt2).toFixed(2);
+        this.setState({
+            result: result
+        }, () => {
+            this.handleShowResult();
+        })
+    }
+
+    handleShowResult = () => {
+        this.setState({
+            displayResult: this.state.result
+        }, () => {
+           let [convertedFrom, convertedTo] = this.state.selectedCurrency;
+            
+           const userActivity = {
+                convertedFrom: convertedFrom,
+                convertedTo: convertedTo,
+                amount: this.state.amount
+            }
+            axios.post("http://localhost:5000/users-activity", userActivity)
+                .catch(error => {
+                    console.log(error);
+                })
+        })
+    }
     render() {
         return (
             <>
@@ -74,8 +91,8 @@ export default class Converter extends Component {
                     currencyRates={this.state.currencyData}
                     handleSelectChange={this.handleSelectChange}
                     selectBoxUsed={this.state.selectBoxUsed}
-                    handleShowResult={this.handleShowResult}
-                    resultInput={this.state.resultInput}>
+                    displayResult={this.state.displayResult}
+                    selectedCurr={this.state.selectedCurrency}>
                 </ConverterModule>
             </>
         )
