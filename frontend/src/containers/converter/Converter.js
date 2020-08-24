@@ -5,9 +5,9 @@ import axios from 'axios'
 export default class Converter extends Component {
     state = {
         amount: '',
+        resultInput: '',
         result: '',
         currencyData: [],
-        boxSelected: 0,
         selectedCurrency: [],
         selectBoxUsed: 0
     }
@@ -18,16 +18,40 @@ export default class Converter extends Component {
       })
     }
 
+    GetTheSelectedAmount = () => {
+        if(this.state.selectedCurrency.length === 2) {
+            let [num1, num2] = this.state.selectedCurrency;
+            this.CalculateTheSum(num1, num2);
+        }
+    }
+
+    handleShowResult = () => {
+        this.setState({
+            resultInput: this.state.result
+        })
+    }
+
+    CalculateTheSum = (amt1, amt2) => {
+        const result = ((this.state.amount / amt1) * amt2).toFixed(2);
+        this.setState({
+            result: result
+        }, () => {
+            this.handleShowResult();
+        })
+    }
+
     handleSelectChange = (selectedBox, e) => {
         var selection = e.target.value;
-        
+
         const newSelected = [...this.state.selectedCurrency]
         
         newSelected[selectedBox] = selection;
 
         this.setState({
             selectedCurrency: newSelected
-        })
+        }, () => {
+            this.GetTheSelectedAmount();
+          })
     }
 
     componentDidMount(){
@@ -49,7 +73,9 @@ export default class Converter extends Component {
                     handleAmountChange={this.handleAmountChange}
                     currencyRates={this.state.currencyData}
                     handleSelectChange={this.handleSelectChange}
-                    selectBoxUsed={this.state.selectBoxUsed}>
+                    selectBoxUsed={this.state.selectBoxUsed}
+                    handleShowResult={this.handleShowResult}
+                    resultInput={this.state.resultInput}>
                 </ConverterModule>
             </>
         )

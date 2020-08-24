@@ -8,7 +8,7 @@ export const SelectCurrency = ({currencyRates, handleSelectChange, selectedBox})
          <option value={selectedBox}>Choose currency</option>
         {
             currencyRates.map(curr => {
-                return <SelectCurrencyItem key={curr._id} currency={curr.Ccy}/>
+                return <SelectCurrencyItem key={curr._id} currency={curr}/>
             })
         }
       </select>

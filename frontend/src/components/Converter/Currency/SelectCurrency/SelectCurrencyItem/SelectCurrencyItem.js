@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const SelectCurrencyItem = ({currency}) => {
+export const SelectCurrencyItem = (props) => {
+    const {Ccy, Amt} = props.currency;
     return (
-        <option value={currency}>{currency}</option>
+        <option value={Amt}>{Ccy}</option>
     )
 }
