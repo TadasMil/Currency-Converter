@@ -1,6 +1,6 @@
 # Currency Converter application
 
-The program will take in currency we want to convert from and currency code we want to convert to, as well as the amount of money, afterwards, the program will output correct exchange rate based on the data from the API’s.
+The program will take in currency you want to convert from and currency code you want to convert to, as well as the amount of money, afterwards, the program will dynamic output correct exchange rate based on the data from the API’s.
 
 
 # Built With
