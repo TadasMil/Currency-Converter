@@ -1,0 +1,7 @@
+{
+    "env": {
+        "DB_USER": "tadas",
+        "DB_PASSWORD": "nqOvq9nJxfKMPSAv",
+        "DB_NAME": "Currencies"
+    }
+}

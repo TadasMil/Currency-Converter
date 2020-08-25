@@ -6,7 +6,7 @@ import axios from 'axios'
 
 class App extends Component {
   componentDidMount(){
-    axios.get('http://localhost:5000/')
+    axios.get(process.env.REACT_APP_BACKEND_URL)
       .then(response => {
         console.log(response)
       })

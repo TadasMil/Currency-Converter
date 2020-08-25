@@ -13,7 +13,7 @@ export default class Converter extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/currency')
+        axios.get(process.env.REACT_APP_BACKEND_DATA_URL)
             .then(response => {
                 var currency = response.data;
              this.setState({
@@ -76,7 +76,7 @@ export default class Converter extends Component {
                 convertedTo: convertedTo,
                 amount: this.state.amount
             }
-            axios.post("http://localhost:5000/users-activity", userActivity)
+            axios.post(process.env.REACT_APP_BACKEND_URL + "users-activity", userActivity)
                 .catch(error => {
                     console.log(error);
                 })

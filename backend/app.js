@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-const connection = 'mongodb+srv://tadas:nqOvq9nJxfKMPSAv@converter.scct9.mongodb.net/Currencies?retryWrites=true&w=majority';
+const connection = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@converter.scct9.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -27,7 +27,7 @@ mongoose
     .connect(connection, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log("connected")
-        app.listen(5000);
+        app.listen(process.env.PORT || 5000);
     })
     .catch((error) => {
         console.log(error);
