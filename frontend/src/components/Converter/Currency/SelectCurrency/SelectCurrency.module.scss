@@ -1,8 +1,8 @@
 .SelectCurrency{
     margin: 1rem 2rem;
-    width: 80%;
+    width: 90%;
     outline: none;
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1rem 3rem 1rem 1rem;
     border: 1px solid blue;
     text-transform: uppercase;
 }
@@ -10,4 +10,16 @@
 .Option{
     padding: 5px;
     font-size: 0.9rem;
+}
+
+@media (max-width: 800px){
+    .SelectCurrency{
+        margin: 1rem 0;
+    }
+}
+
+@media(max-width: 600px){
+    .SelectCurrency{
+        width: 100%;
+    }
 }

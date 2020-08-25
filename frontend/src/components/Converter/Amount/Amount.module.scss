@@ -19,4 +19,20 @@
     text-align: center;
     margin: 0 2rem;
     font-size: 1rem;
+    width: 40%;
+    max-width:400px;
+}
+
+@media(max-width: 800px){
+    .AmountInput {
+        width: 80%;
+        max-width: none;
+    }
+}
+
+@media(max-width: 500px){
+    .Amount
+    {
+        padding: 0;
+    }
 }

@@ -48,7 +48,7 @@ export default class Converter extends Component {
 
     GetTheSelectedAmount = () => {
         const maxCurrencies = 2;
-        if(this.state.selectedCurrency.length === maxCurrencies) {
+        if(this.state.selectedCurrency.length === maxCurrencies && this.state.selectedCurrency[0] != null) {
             const num1 = this.state.selectedCurrency[0].slice(4);
             const num2 = this.state.selectedCurrency[1].slice(4);
 

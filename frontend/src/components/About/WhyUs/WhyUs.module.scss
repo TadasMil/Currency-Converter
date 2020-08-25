@@ -1,0 +1,30 @@
+.WhyUs{
+    display: flex;
+    margin-top: 2rem;
+    flex: 30%;
+   justify-content: space-evenly;
+}
+
+.Icons{
+    display: inline-block;
+    margin: 1rem 0;
+
+    p{
+        display: inline;
+        margin: 0;
+        margin: 1rem 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+.Icon{
+    font-size: 2rem;
+    vertical-align: middle;
+}
+
+@media(max-width: 900px){
+    .WhyUs{
+        flex-direction: column;
+        margin: 1rem auto 0 auto;
+    }
+}
